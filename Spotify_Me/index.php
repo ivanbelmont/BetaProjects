@@ -1,4 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php 
+include '../conexion.php';
+ $mysqli=conectar(1);
+
+?>
 <html>
     <head>
         <title>Music Portfolio Template with HTML5 and jQuery</title>
@@ -287,6 +292,15 @@
     <body>
 		<div class="mp_wrapper">
 			<div id="mp_content_wrapper" class="mp_content_wrapper">
+			<?php
+			   $mysqli->real_query ('SELECT * FROM  `Spotify_album` order by nombre DESC');
+			    $resultado = $mysqli->use_result();
+				  while ($fila = $resultado->fetch_object())
+           {
+		   echo $fila->nombre;
+		   }
+			?>
+			
 				<div class="mp_content" id="c_album_1">
 					<img src="music/album1/album.jpg" alt="album1"/>
 					<a href="#" class="mp_playall">Play all</a>
@@ -338,7 +352,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="mp_content" id="c_album_2" style="display:none;">
 					<img src="music/album2/album.jpg" alt="album2"/>
 					<a href="#" class="mp_playall">Play all</a>
