@@ -297,11 +297,63 @@ include '../conexion.php';
 			    $resultado = $mysqli->use_result();
 				  while ($fila = $resultado->fetch_object())
            {
+		   ?>
+		   <div class="mp_content" id="c_album_1">
+					<img src="music/album1/album.jpg" alt="album1"/>
+					<a href="#" class="mp_playall">Play all</a>
+					<div class="mp_description">
+						<h2>Strings of Freedom</h2>
+						<p>
+							Recording began in 2009 and and we finally finished this album in the
+							end of this month. Strings of Freedom is our acoustic achievement. We dedicate
+							it to all our families and friends. Its about living freely and enjoy life.
+						</p>
+					</div>
+					<div class="mp_songs">
+						<div>
+							<h3>Our Resolve</h3>
+							<div class="mp_options">
+								<span class="mp_play">Play</span>
+								<span class="mp_addpl">Add to playlist</span>
+							</div>
+							<div class="mp_song_info" style="display:none;">
+								<span class="mp_song_title">Our Resolve</span>
+								<span class="mp_mp3">music/album1/ramblinglibrarian_-_Our_Resolve.mp3</span>
+								<span class="mp_ogg">music/album1/ramblinglibrarian_-_Our_Resolve.ogg</span>
+							</div>
+						</div>
+						<div>
+							<h3>How do I make you see</h3>
+							<div class="mp_options">
+								<span class="mp_play">Play</span>
+								<span class="mp_addpl">Add to playlist</span>
+							</div>
+							<div class="mp_song_info" style="display:none;">
+								<span class="mp_song_title">How do I make you see</span>
+								<span class="mp_mp3">music/album1/ramblinglibrarian_-_Rock_Version_-_How_Do_I_Make_You_See_1.mp3</span>
+								<span class="mp_ogg">music/album1/ramblinglibrarian_-_Rock_Version_-_How_Do_I_Make_You_See_1.ogg</span>
+							</div>
+						</div>
+						<div>
+							<h3>BurningIdolStickerbrushSymphony</h3>
+							<div class="mp_options">
+								<span class="mp_play">Play</span>
+								<span class="mp_addpl">Add to playlist</span>
+							</div>
+							<div class="mp_song_info" style="display:none;">
+								<span class="mp_song_title">BurningIdolStickerbrushSymphony</span>
+								
+								<span class="mp_mp3">http://valeriussoftware.890m.com/Ejemplos/Archivos/Musica/BurningIdolStickerbrushSymphony.mp3</span>
+								<span class="mp_ogg">http://valeriussoftware.890m.com/Ejemplos/Archivos/Musica/BurningIdolStickerbrushSymphony.ogg</span>
+							</div>
+						</div>
+					</div>
+		   <?php
 		   echo $fila->nombre;
 		   }
 			?>
 			
-				<div class="mp_content" id="c_album_1">
+				
 					<img src="music/album1/album.jpg" alt="album1"/>
 					<a href="#" class="mp_playall">Play all</a>
 					<div class="mp_description">
