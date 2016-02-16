@@ -302,11 +302,9 @@ include '../conexion.php';
 					<img src="music/album1/album.jpg" alt="album1"/>
 					<a href="#" class="mp_playall">Play all</a>
 					<div class="mp_description">
-						<h2>Strings of Freedom</h2>
+						<h2><?php echo ucwords($fila->nombre); ?></h2>
 						<p>
-							Recording began in 2009 and and we finally finished this album in the
-							end of this month. Strings of Freedom is our acoustic achievement. We dedicate
-							it to all our families and friends. Its about living freely and enjoy life.
+							<?php echo ucwords($fila->Descripcion); ?>
 						</p>
 					</div>
 					<div class="mp_songs">
@@ -464,13 +462,8 @@ include '../conexion.php';
 				<li><img src="music/album3/thumb.jpg" alt="album3" /></li>
 			</ul>
 		</div>
-        <div class="reference">
-			<a href="http://tympanus.net/codrops/2010/07/26/music-portfolio-template/">back to the Codrops article</a>
-			<a href="http://www.flickr.com/photos/rickharris/">Photos by Rick Harris</a>
-			<div xmlns:cc="http://creativecommons.org/ns#" about="urn:sha1:SFMAAK7FTYXXBHDZUWL7QNJJAUE5WD4J"><a rel="cc:attributionURL" property="cc:attributionName" href="http://ccmixter.org/people/ramblinglibrarian/profile">Music Samples by Ivan Chew</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC 3.0</a></div>
-		</div>
-<iframe src="https://onedrive.live.com/embed?cid=4C82A0FC9E7726E1&resid=4C82A0FC9E7726E1%21217&authkey=AMfp7oXQLkQpPqU" width="98" height="120" frameborder="0" scrolling="no"></iframe>
+<!-- <iframe src="https://onedrive.live.com/embed?cid=4C82A0FC9E7726E1&resid=4C82A0FC9E7726E1%21217&authkey=AMfp7oXQLkQpPqU" width="98" height="120" frameborder="0" scrolling="no"></iframe>-->
    <iframe src="https://drive.google.com/file/d/0B8fM7TgcS3c1RVVkRTZReHZMZVU/preview" width="200" height="200"></iframe>
-   <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A0C9Rd7s2wQggmMBCu4BSKf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  <!-- <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A0C9Rd7s2wQggmMBCu4BSKf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>-->
 	</body>
 </html>
