@@ -365,7 +365,7 @@ include '../conexion.php';
 		  // echo $fila->nombre;
 		   }
 			?>
-				<div class="mp_content" id="c_album_2" >
+				<div class="mp_content" id="c_album_2" style="display:none;" >
 					<img src="music/album2/album.jpg" alt="album2"/>
 					<a href="#" class="mp_playall">Play all</a>
 					<div class="mp_description">
