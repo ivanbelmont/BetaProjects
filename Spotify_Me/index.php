@@ -298,7 +298,7 @@ include '../conexion.php';
 				  while ($fila = $resultado->fetch_object())
            {
 		   ?>
-		   <div class="mp_content" id="album_<?php echo $fila->id; 
+		   <div class="mp_content" id='album_<?php echo $fila->id."'"; 
 		   
 		  $principal=$fila->Principal;
 		  IF($principal==1)
@@ -311,7 +311,8 @@ include '../conexion.php';
 		  echo 'style="display:none;"';
 		  }
 		   
-		   ?>">
+		   ?>
+		   >
 					<img src="img_Album/<?php echo $fila->id; ?>.jpg" alt="<?php echo $fila->nombre; ?>"/>
 					<a href="#" class="mp_playall">Play all</a>
 					<div class="mp_description">
