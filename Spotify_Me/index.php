@@ -365,82 +365,6 @@ include '../conexion.php';
 		  // echo $fila->nombre;
 		   }
 			?>
-				<div class="mp_content" id="c_album_2" style="display:none;" >
-					<img src="music/album2/album.jpg" alt="album2"/>
-					<a href="#" class="mp_playall">Play all</a>
-					<div class="mp_description">
-						<h2>Time to Shine</h2>
-						<p>
-							Experimental sounds for enjoying life and music as it comes. This album was inspired by the great
-							Eduardo MacGregor who experimented with double sided guitars to achieve a unique sound experience.
-							Time to shine wants to make people shine.
-						</p>
-					</div>
-					<div class="mp_songs">
-						<div>
-							<h3>Bass (Drifting)</h3>
-							<div class="mp_options">
-								<span class="mp_play">Play</span>
-								<span class="mp_addpl">Add to playlist</span>
-							</div>
-							<div class="mp_song_info" style="display:none;">
-								<span class="mp_song_title">Bass (Drifting)</span>
-								<span class="mp_mp3">music/album2/ramblinglibrarian_-_Bass_(Drifting).mp3</span>
-								<span class="mp_ogg">music/album2/ramblinglibrarian_-_Bass_(Drifting).ogg</span>
-							</div>
-						</div>
-						<div>
-							<h3>Briefly us</h3>
-							<div class="mp_options">
-								<span class="mp_play">Play</span>
-								<span class="mp_addpl">Add to playlist</span>
-							</div>
-							<div class="mp_song_info" style="display:none;">
-								<span class="mp_song_title">Briefly us</span>
-								<span class="mp_mp3">music/album2/ramblinglibrarian_-_Briefly_Us.mp3</span>
-								<span class="mp_ogg">music/album2/ramblinglibrarian_-_Briefly_Us.ogg</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="mp_content" id="c_album_3" style="display:none;">
-					<img src="music/album3/album.jpg" alt="album3"/>
-					<a href="#" class="mp_playall">Play all</a>
-					<div class="mp_description">
-						<h2>Time to Shine</h2>
-						<p>
-							Experimental sounds for enjoying life and music as it comes. This album was inspired by the great
-							Eduardo MacGregor who experimented with double sided guitars to achieve a unique sound experience.
-							Time to shine wants to make people shine.
-						</p>
-					</div>
-					<div class="mp_songs">
-						<div>
-							<h3>Bass (Drifting)</h3>
-							<div class="mp_options">
-								<span class="mp_play">Play</span>
-								<span class="mp_addpl">Add to playlist</span>
-							</div>
-							<div class="mp_song_info" style="display:none;">
-								<span class="mp_song_title">Bass (Drifting)</span>
-								<span class="mp_mp3">music/album2/ramblinglibrarian_-_Bass_(Drifting).mp3</span>
-								<span class="mp_ogg">music/album2/ramblinglibrarian_-_Bass_(Drifting).ogg</span>
-							</div>
-						</div>
-						<div>
-							<h3>Briefly us</h3>
-							<div class="mp_options">
-								<span class="mp_play">Play</span>
-								<span class="mp_addpl">Add to playlist</span>
-							</div>
-							<div class="mp_song_info" style="display:none;">
-								<span class="mp_song_title">Briefly us</span>
-								<span class="mp_mp3">music/album2/ramblinglibrarian_-_Briefly_Us.mp3</span>
-								<span class="mp_ogg">music/album2/ramblinglibrarian_-_Briefly_Us.ogg</span>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 			
 			<div class="mp_player">
@@ -482,8 +406,6 @@ include '../conexion.php';
 		   <?php
 		   }
 		   ?>
-				<li><img src="music/album2/thumb.jpg" alt="album2" /></li>
-				<li><img src="music/album3/thumb.jpg" alt="album3" /></li>
 			</ul>
 		</div>
 <!-- <iframe src="https://onedrive.live.com/embed?cid=4C82A0FC9E7726E1&resid=4C82A0FC9E7726E1%21217&authkey=AMfp7oXQLkQpPqU" width="98" height="120" frameborder="0" scrolling="no"></iframe>-->
