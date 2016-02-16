@@ -298,8 +298,8 @@ include '../conexion.php';
 				  while ($fila = $resultado->fetch_object())
            {
 		   ?>
-		   <div class="mp_content" id="c_album_1">
-					<img src="music/album1/album.jpg" alt="<?php echo $fila->nombre; ?>"/>
+		   <div class="mp_content" id="album_<?php echo $fila->id; ?>">
+					<img src="img_Album/<?php echo $fila->id; ?>" alt="<?php echo $fila->nombre; ?>"/>
 					<a href="#" class="mp_playall">Play all</a>
 					<div class="mp_description">
 						<h2><?php echo ucwords($fila->nombre); ?></h2>
@@ -463,7 +463,7 @@ include '../conexion.php';
 				  while ($fila = $resultado->fetch_object())
            {
 		   ?>
-		   <li><img src="music/album1/thumb.jpg" alt="<?php echo $fila->nombre; ?>" /></li>
+		   <li><img src="img_Album/thumb<?php echo fila->id; ?>.jpg" alt="<?php echo $fila->nombre; ?>" /></li>
 		    
 		   <?php
 		   }
