@@ -299,7 +299,7 @@ include '../conexion.php';
            {
 		   ?>
 		   <div class="mp_content" id="c_album_1">
-					<img src="music/album1/album.jpg" alt="album1"/>
+					<img src="music/album1/album.jpg" alt="<?php echo $fila->nombre; ?>"/>
 					<a href="#" class="mp_playall">Play all</a>
 					<div class="mp_description">
 						<h2><?php echo ucwords($fila->nombre); ?></h2>
@@ -457,7 +457,17 @@ include '../conexion.php';
 				</div>
 			</div>
 			<ul id="mp_albums" class="mp_albums jcarousel-skin">
-				<li><img src="music/album1/thumb.jpg" alt="album1" /></li>
+            <?php 			
+			$mysqli->real_query ('SELECT * FROM  `Spotify_album` order by nombre DESC');
+			    $resultado = $mysqli->use_result();
+				  while ($fila = $resultado->fetch_object())
+           {
+		   ?>
+		   <li><img src="music/album1/thumb.jpg" alt="<?php echo $fila->nombre; ?>" /></li>
+		    
+		   <?php
+		   }
+		   ?>
 				<li><img src="music/album2/thumb.jpg" alt="album2" /></li>
 				<li><img src="music/album3/thumb.jpg" alt="album3" /></li>
 			</ul>
