@@ -463,7 +463,7 @@ include '../conexion.php';
 				  while ($fila = $resultado->fetch_object())
            {
 		   ?>
-		   <li><img src="img_Album/thumb<?php echo fila->id; ?>.jpg" alt="<?php echo $fila->nombre; ?>" /></li>
+		   <li><img src="img_Album/thumb<?php echo $fila->id; ?>.jpg" alt="<?php echo $fila->nombre; ?>" /></li>
 		    
 		   <?php
 		   }
