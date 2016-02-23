@@ -298,15 +298,15 @@ include '../conexion.php';
 				  while ($fila = $resultado->fetch_object())
            {
 		   ?>
-		   <div class="mp_content" id='album_<?php echo $fila->id."'"; 
-		   
+		   <div class="mp_content" id='album_<?php echo $fila->id; ?>'; 
+		   <?php
 		  $principal=$fila->Principal;
 		  IF($principal==1)
 		  {
 		  echo "";
 		  
 		  }
-		  ELSE
+		  else
 		  {
 		  echo 'style="display:none;"';
 		  }
