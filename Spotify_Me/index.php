@@ -394,6 +394,10 @@ include '../conexion.php';
 					<div id="jplayer_playlist" class="jp-playlist"><ul></ul></div>
 				</div>
 			</div>
+			<div class="mp_player">
+			<a>Agregar Pistas</a>
+			<a>Agregar Album</a>
+			</div>
 			<ul id="mp_albums" class="mp_albums jcarousel-skin">
             <?php 			
 			$mysqli->real_query ('SELECT * FROM  `Spotify_album` order by nombre DESC');
