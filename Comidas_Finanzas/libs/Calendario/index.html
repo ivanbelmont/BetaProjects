@@ -1,0 +1,25 @@
+<script>window.addEvent('load', function() {
+	new DatePicker('.demo_vista', { pickerClass: 'datepicker_vista' });
+	new DatePicker('.demo_dashboard', { pickerClass: 'datepicker_dashboard' });
+	new DatePicker('.demo_jqui', { pickerClass: 'datepicker_jqui', positionOffset: { x: 0, y: 5 } });
+	new DatePicker('.demo', { positionOffset: { x: 0, y: 5 }});
+});
+</script>
+<script src="datepicker.js"></script>
+<label>Datepicker with Vista skin:</label>
+<input name='date_B' type='text' value='' class='date demo_vista' />
+
+<label>Datepicker with OSX Dashboard skin:</label>
+<input name='date_B' type='text' value='' class='date demo_dashboard' />
+
+<label>Datepicker with jQuery UI skin:</label>
+<input name='date_B' type='text' value='' class='date demo_jqui' />
+
+<label>Datepicker basic (CSS only):</label>
+<input name='date_B' type='text' value='' class='date demo' />
+<style>
+input.date {
+	width: 150px;
+	color: #000;
+}
+</style>
