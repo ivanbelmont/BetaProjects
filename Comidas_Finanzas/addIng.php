@@ -5,7 +5,7 @@ setlocale(LC_ALL,"esp");
 ?>
 <html> 
 <head> 
-  <title>Comidas</title> 
+  <title>Agregar Comidas</title> 
   <meta name="viewport" content="initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -72,8 +72,8 @@ eliminarProc('10128'+ProductoNId);
   <div data-role="header" data-position="fixed">
     <a href="ComidasSemana.php" data-transition="flip" >Comidas para esta semana</a>
 
-    <a href="addcomidas.php" data-transition="pop" >Comidas y recetas</a>
-    <h1>Comidas por hacer</h1>
+    <a href="index.php" data-transition="pop" >Regresar</a>
+    <h1>Agregar Ingrediente</h1>
     <?php 
 $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -175,41 +175,19 @@ echo $fecha=$dayL." ".$day." de ".$month." del ".$year;
   
 <div  data-role="fieldcontain">
         <fieldset data-role="controlgroup">
-           <h1>Comidas disponibles</h1>
+           <h1>Agregar Ingrediente para</h1>
            <form action='procesar.php' id="miform" method='GET' data-ajax="false">
 
-           <?php
-
-
-$mysqli->real_query ('SELECT DISTINCT c.id,c.nombre,h.fecha_preparacion FROM historico h, comida c
-                        WHERE c.id= h.id_comida
-                        AND fecha_repeticion <= (SELECT CURDATE());');
-$id=1;
-          $resultado = $mysqli->use_result();
-          while ($fila = $resultado->fetch_object())
-           {
-                     
-
-                   
-                        $sqlPrecio="SELECT SUM(precio) PRECIO FROM ingredientes WHERE id_comida=$fila->id;";
-
-                        //$precons=mysql_query($sqlPrecio);
-                        //$filePre=mysql_fetch_array($precons);
-                          ?> 
-                          <input type="checkbox" onclick="agregar('<?php echo $fila->id?>','<?php echo $fila->nombre?>')"; value="<?php echo $fila->id; ?>" name='checkbox[]' id="checkbox-<?php echo $id; ?>" class="custom" />
-                          <label for="checkbox-<?php echo $id; ?>" ><?php echo $fila->nombre; ?>
+   <input type="text" value="" name='Comida' placeholder="Ingrediente" id="Com" class="custom" />
+                          
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <?php echo "Precio total Estimado $" ?></label>
+         </label>
                          <!-- <input type="date" name="fechas[]"><br><br>-->
                          <div data-role="fieldcontain" id ="<?php echo $fila->id?>"></div>
-                          <label >Ultima preparacion: <?php echo ConvetidorFechas($fila->fecha_preparacion,3); ?></label>
-                          <?php
-                          $id+=1;
-                        }  
-?>
-<input type="hidden" name="opc" value="1">
-<input type="submit" value="Selecionar">
+                         <input type="hidden" name="opc" value="2">
+                          
+<input type="submit" value="Agregar">
 </form>
           </fieldset>
       </div>
