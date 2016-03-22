@@ -5,7 +5,7 @@ setlocale(LC_ALL,"esp");
 ?>
 <html> 
 <head> 
-  <title>My Page</title> 
+  <title>Comidas para la semana</title> 
   <meta name="viewport" content="initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
