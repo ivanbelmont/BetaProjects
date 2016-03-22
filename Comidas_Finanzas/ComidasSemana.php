@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <?php include '../conexion.php';
-conectar(1);
+$mysqli=conectar(1);
 setlocale(LC_ALL,"esp");
 ?>
 <html> 
@@ -32,19 +32,21 @@ setlocale(LC_ALL,"esp");
         <br><em>* Precio estimado por comida</em>
 
     
-        <?php $sqlcomida= "select * from comida c,historico h
+        <?php 
+$mysqli->real_query ('select * from comida c,historico h
 where h.id_comida=c.id
 order by h.fecha_preparacion DESC
-LIMIT 5;";
-        $ConsCom=mysql_query($sqlcomida);
+LIMIT 5;');
+          $resultado = $mysqli->use_result();
+          while ($fila = $resultado->fetch_object())
+           {
 
-        while ($filecom=mysql_fetch_object($ConsCom)) {
           ?> 
             <div data-role="collapsible" data-collapsed="true" data-theme="a">
-        <h3><?php echo $filecom->nombre; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h3><?php echo $fila->nombre; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php
 
-         $fechaD= $filecom->fecha_preparacion; 
+         $fechaD= $fila->fecha_preparacion; 
          $fechats = strtotime($fechaD); //a timestamp 
 
 switch (date('w', $fechats)){ 
@@ -60,7 +62,7 @@ switch (date('w', $fechats)){
 
          ?></h3>
          <b>Ingredientes</b><br><br>
-        <?php  $sqlIngre="SELECT * FROM ingredientes i WHERE i.id_comida= ".$filecom->id_comida;
+        <?php  $sqlIngre="SELECT * FROM ingredientes i WHERE i.id_comida= ".$fila->id_comida;
 
         $consIng=mysql_query($sqlIngre);
         while ($fileIng=mysql_fetch_object($consIng)) 

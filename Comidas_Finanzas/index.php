@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <?php include '../conexion.php';
-conectar(1);
+$mysqli=conectar(1);
 setlocale(LC_ALL,"esp");
 ?>
 <html> 
@@ -179,27 +179,31 @@ echo $fecha=$dayL." ".$day." de ".$month." del ".$year;
            <form action='procesar.php' id="miform" method='GET' data-ajax="false">
 
            <?php
-           $sql="SELECT DISTINCT c.id,c.nombre,h.fecha_preparacion FROM historico h, comida c
+
+
+$mysqli->real_query ('SELECT DISTINCT c.id,c.nombre,h.fecha_preparacion FROM historico h, comida c
                         WHERE c.id= h.id_comida
-                        AND fecha_repeticion <= (SELECT CURDATE());";
-                      $id=1;
+                        AND fecha_repeticion <= (SELECT CURDATE());');
+$id=1;
+          $resultado = $mysqli->use_result();
+          while ($fila = $resultado->fetch_object())
+           {
+                     
 
-                      $cons=mysql_query($sql);
-                      while ($file=mysql_fetch_object($cons)) {
+                   
+                        $sqlPrecio="SELECT SUM(precio) PRECIO FROM ingredientes WHERE id_comida=$fila->id;";
 
-                        $sqlPrecio="SELECT SUM(precio) PRECIO FROM ingredientes WHERE id_comida=$file->id;";
-
-                        $precons=mysql_query($sqlPrecio);
-                        $filePre=mysql_fetch_array($precons);
+                        //$precons=mysql_query($sqlPrecio);
+                        //$filePre=mysql_fetch_array($precons);
                           ?> 
-                          <input type="checkbox" onclick="agregar('<?php echo $file->id?>','<?php echo $file->nombre?>')"; value="<?php echo $file->id; ?>" name='checkbox[]' id="checkbox-<?php echo $id; ?>" class="custom" />
-                          <label for="checkbox-<?php echo $id; ?>" ><?php echo $file->nombre; ?>
+                          <input type="checkbox" onclick="agregar('<?php echo $fila->id?>','<?php echo $fila->nombre?>')"; value="<?php echo $fila->id; ?>" name='checkbox[]' id="checkbox-<?php echo $id; ?>" class="custom" />
+                          <label for="checkbox-<?php echo $id; ?>" ><?php echo $fila->nombre; ?>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         <?php echo "Precio total Estimado $".$filePre['PRECIO']; ?></label>
+         <?php //echo "Precio total Estimado $" ?></label>
                          <!-- <input type="date" name="fechas[]"><br><br>-->
-                         <div data-role="fieldcontain" id ="<?php echo $file->id?>"></div>
-                          <label >Ultima preparacion: <?php echo ConvetidorFechas($file->fecha_preparacion,3); ?></label>
+                         <div data-role="fieldcontain" id ="<?php echo $fila->id?>"></div>
+                          <label >Ultima preparacion: <?php echo ConvetidorFechas($fila->fecha_preparacion,3); ?></label>
                           <?php
                           $id+=1;
                         }  

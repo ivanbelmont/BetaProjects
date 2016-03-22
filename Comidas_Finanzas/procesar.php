@@ -1,8 +1,7 @@
 <?php 
 
 include '../conexion.php';
-conectar(1);
-
+$mysqli=conectar(1);
 $checkbox=$_GET['checkbox'];
 $fechas=$_GET['fechas'];
 
