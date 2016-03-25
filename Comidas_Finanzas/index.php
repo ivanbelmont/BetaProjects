@@ -12,60 +12,46 @@ setlocale(LC_ALL,"esp");
   <link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
   <script src="libs/jquery-1.9.1.min.js"></script>
   <script src="libs/jquery.mobile-1.3.1.min.js"></script>
-
-
-
-<!--
-  
-  <script src="libs/jquery-1.9.1.js"></script> 
-  <script src="libs/external/jquery-ui/datepicker.js"></script>
-  <script src="libs/jquery.mobile-git.js"></script> 
-  <script src="libs/jquery.mobile.datepicker.js"></script>
--->
 </head> 
 <body> 
     <script>
-    $(function(){
-      $( ".date-input-css" ).datepicker();
-    })
+    function agregar(id)
+    {
 
 
-    function agregar(id,name)
+      var Valor=id;
+      var Chk="checkbox-"+Valor;
+      var Checado=document.getElementById(Chk).checked;//Esta en Check?
+ if (Checado==true)
     {
-      var Nombre=name;
-      var ProductoNId=id;
-    //  if ( document.getElementById(ProductoNId)) {
-      var ContId=document.getElementById(ProductoNId);             
-        var checkedValue = $('#checkbox-'+ProductoNId+':checked').val();
-    if (checkedValue)
-    {
-//alert("Check");
-  //  campo = '<input type="date" size="100" id="10128'+ProductoNId+'"&nbsp; value="" name="fechas[]" /><span title="Eliminar" onclick="eliminarProc('+ProductoNId+')">X</span></li><br>';
-    campo = '<input type="date" size="300" id="10128'+ProductoNId+'"&nbsp; value="" name="fechas[]" />';
-$("#"+ProductoNId).append(campo);//Agregar inputs creados
-    }//END IF
-    else
-    {
-//alert("Uncheck");
-eliminarProc('10128'+ProductoNId);
+    var btn = document.createElement("input");
+      btn.setAttribute("value", Valor);
+      btn.setAttribute("placeholder", "Fecha");
+      btn.setAttribute("id", "CHK"+Valor);
+      //btn.setAttribute("name", "Ing"+Valor);
+      btn.setAttribute("name", "Ing[]");
+      btn.setAttribute("type", "date");
+      //btn.setAttribute("readonly", "true");
+      
+      
+      document.getElementById("myDIV"+Valor).appendChild(btn);
+
+     }
+  else{
+    Delete(Valor);
+  }
+
+
+      
     }//ENd ELSE
-  //alert("No existe, agregar");
+  function Delete(id) {
+  
+      var ids="CHK"+id;
+      var ElementoDelete = document.getElementById(ids);
+      ElementoDelete.parentNode.removeChild(ElementoDelete);
 
-
-
-    }//END FUCTION agregar
-
-
-      function eliminarProc(elemento)
-        {
-       
-          //  var id=elemento.parentNode.getAttribute("id");
-            var id=elemento;
-            node=document.getElementById(id);
-            node.parentNode.removeChild(node);
-            
-        }
-  </script>
+}
+</script>
 
 <div data-role="page">
 
@@ -191,18 +177,18 @@ $id=1;
                      
 
                    
-                        $sqlPrecio="SELECT SUM(precio) PRECIO FROM ingredientes WHERE id_comida=$fila->id;";
-
-                        //$precons=mysql_query($sqlPrecio);
-                        //$filePre=mysql_fetch_array($precons);
-                          ?> 
-                          <input type="checkbox" onclick="agregar('<?php echo $fila->id?>','<?php echo $fila->nombre?>')"; value="<?php echo $fila->id; ?>" name='checkbox[]' id="checkbox-<?php echo $id; ?>" class="custom" />
-                          <label for="checkbox-<?php echo $id; ?>" ><?php echo $fila->nombre; ?>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        //$sqlPrecio="SELECT SUM(precio) PRECIO FROM ingredientes WHERE id_comida=$fila->id;";
+             ?> 
+                          <input type="checkbox" onclick="agregar('<?php echo $fila->id; ?>')" 
+                          value="<?php echo $fila->id; ?>"
+                           name='checkbox[]' id="checkbox-<?php echo $fila->id; ?>" class="custom" />
+                          <label for="checkbox-<?php echo $fila->id; ?>" ><?php echo $fila->nombre; ?>
+                          
          <?php echo "Precio total Estimado $" ?></label>
                          <!-- <input type="date" name="fechas[]"><br><br>-->
                          <div data-role="fieldcontain" id ="<?php echo $fila->id?>"></div>
+                         <div id="myDIV<?php echo $fila->id; ?>">
+                          </div>
                           <label >Ultima preparacion: <?php echo ConvetidorFechas($fila->fecha_preparacion,3); ?></label>
                           <?php
                           $id+=1;

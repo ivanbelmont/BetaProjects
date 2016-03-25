@@ -33,20 +33,94 @@ header("location: ComidasSemana.php");
 $mysqli=conectar(0);
 		break;
 	case 2:
-$numero = count($_GET);
-$tags = array_keys($_GET);// obtiene los nombres de las varibles
-$valores = array_values($_GET);// obtiene los valores de las varibles
 
-// crea las variables y les asigna el valor
-for($i=0;$i<$numero;$i++){
-echo $tags[$i];
-echo "<br>";
-echo $tags[$i]=$valores[$i];
-echo "<br>";
-echo $numero[$i];
+	$Com=$_GET['Comida'];
+	$Ing=$_GET['Ing'];
+	$Prepa=$_GET['Prepa'];
+
+	echo $Com;
+	echo "<br>";
+	var_dump($Ing);
+	echo "<br>";
+	var_dump($Prepa);
+
+// INSERTAR COMIDA
+try{
+
+ if (!$mysqli->query("INSERT INTO comida (id,nombre) VALUES (null,'$Com')"))
+ { 
+    throw new Exception('error!'); 
+ }
+
+}catch( Exception $e ){
+	echo "<br>error type -> ".$e;
+  $mysqli->rollback();
+}
+$mysqli->commit();
+
+//OBTENER ID MAS ACTUAL
+
+    $resultado = $mysqli->query("SELECT MAX(id) id FROM comida");
+    $fila = $resultado->fetch_assoc();
+
+    $ids= $fila['id'];
+
+
+
+// INSERTAR EN HISTORIO
+try{
+
+ if (!$mysqli->query("INSERT INTO historico (id,id_comida) VALUES (null,$ids)"))
+ { 
+    throw new Exception('error!'); 
+ }
+
+}catch( Exception $e ){
+	echo "<br>error type -> ".$e;
+  $mysqli->rollback();
+}
+$mysqli->commit();
+
+// INSERTAR INGREDIENTES
+
+for ($i=0; $i <count($Ing) ; $i++) { 
+	try{
+
+ if (!$mysqli->query("INSERT INTO ingredientes (id,nombre,precio,id_comida) VALUES (null,'".$Ing[$i]."',0,$ids)"))
+ { 
+    throw new Exception('error!'); 
+ }
+
+}catch( Exception $e ){
+	echo "<br>error type -> ".$e;
+  $mysqli->rollback();
+}
+$mysqli->commit();
+
+	# code...
 }
 
-	//header("location: addIng.php?id=10");
+
+// INSERTAR PREPARACION
+for ($i=0; $i <count($Prepa) ; $i++) { 
+	try{
+
+ if (!$mysqli->query("INSERT INTO preparacion (id,nombre,orden,descripcion,id_comida) VALUES 
+ 	(null,'".$Prepa[$i]."',0,'NA',$ids)"))
+ { 
+    throw new Exception('error!'); 
+ }
+
+}catch( Exception $e ){
+	echo "<br>error type -> ".$e;
+  $mysqli->rollback();
+}
+$mysqli->commit();
+
+	# code...
+}
+
+$mysqli=conectar(0);
 		break;
 	default:
 		# code...

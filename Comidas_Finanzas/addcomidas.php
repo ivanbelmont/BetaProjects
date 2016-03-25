@@ -57,7 +57,7 @@ function myFunctioninputPrep() {
       btn.setAttribute("placeholder", "Preparacion "+Valor);
       btn.setAttribute("id", "Prep"+Valor);
       //btn.setAttribute("name", "Ing"+Valor+"[]");
-      btn.setAttribute("name", "Ing[]");
+      btn.setAttribute("name", "Prepa[]");
       btn.setAttribute("type", "text");
       //btn.setAttribute("readonly", "true");
 
@@ -75,9 +75,9 @@ function myFunctioninputPrep() {
       br.setAttribute("id", Valor);
       
       
-      document.getElementById("myDIV").appendChild(btn);
-      document.getElementById("myDIV").appendChild(img);
-      document.getElementById("myDIV").appendChild(br);
+      document.getElementById("myDIV2").appendChild(btn);
+      document.getElementById("myDIV2").appendChild(img);
+      document.getElementById("myDIV2").appendChild(br);
 }
 
 function Delete(id) {
@@ -223,7 +223,7 @@ echo $fecha=$dayL." ".$day." de ".$month." del ".$year;
            <h1>Agregar Comida</h1>
            <form action='procesar.php' id="miform" method='GET' data-ajax="false">
 
-   <input type="text" value="" name='Comida' placeholder="Nombre del Platillo" id="Com" class="custom" />
+   <input type="text" value=""  required name='Comida' placeholder="Nombre del Platillo" id="Com" class="custom" />
                           
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -236,7 +236,11 @@ echo $fecha=$dayL." ".$day." de ".$month." del ".$year;
                           
                           <input name="X" id="contar" type="hidden" value="0" > 
                           <input name="X" id="contarPrep" type="hidden" value="0" > 
+                          <hr style="border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height:0;">Ingredientes</hr>
                           <div id="myDIV">
+</div>
+<hr style="border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height:0;">Preparacion</hr>
+<div id="myDIV2">
 </div>
 <input type="submit" value="Agregar">
 </form>
