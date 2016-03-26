@@ -50,14 +50,18 @@ LIMIT 5;');
          $fechats = strtotime($fechaD); //a timestamp 
 
 switch (date('w', $fechats)){ 
-    case 0: echo "Para el Domingo"; break; 
+    case 0: echo "Para el Domingo".$fechaD; break; 
     case 1: echo "Para el Lunes"; break; 
-    case 2: echo "Para el Martes"; break; 
+    case 2: echo "Para el Martes".$fila->fecha_preparacion; break; 
     case 3: echo "Para el Miercoles"; break; 
     case 4: echo "Para el Jueves"; break; 
     case 5: echo "Para el Viernes"; break; 
     case 6: echo "Para el Sabado"; break; 
-}  
+}
+
+
+
+  
 
 
          ?></h3>
