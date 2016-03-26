@@ -25,7 +25,8 @@ setlocale(LC_ALL,"esp");
  if (Checado==true)
     {
     var btn = document.createElement("input");
-      btn.setAttribute("value", Valor);
+      //btn.setAttribute("value", Valor);
+      btn.setAttribute("value", "");
       btn.setAttribute("placeholder", "Fecha");
       btn.setAttribute("id", "CHK"+Valor);
       //btn.setAttribute("name", "Ing"+Valor);
