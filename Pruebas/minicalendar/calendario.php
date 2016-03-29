@@ -62,7 +62,7 @@ switch ($mes) {
 	}
 	
 	function mostrar(){
-		include 'conexion.php';
+		include '../../conexion.php';
         $mysqli=conectar(1);
 
 		$mes=date('m',time());//Obtener mes actual

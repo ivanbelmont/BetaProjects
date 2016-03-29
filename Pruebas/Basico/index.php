@@ -14,12 +14,8 @@
 <div class="calendar">
 <?php
 
-	$mysqli = new mysqli('localhost','root','','comidas');//Local 
-
-	if ( $mysqli->connect_errno )
-	{
-		die( $mysqli->mysqli_connect_error() );
-	}
+	include '../../conexion.php';
+        $mysqli=conectar(1);
 
 	if(isset($_GET['add-event']))
 	{
