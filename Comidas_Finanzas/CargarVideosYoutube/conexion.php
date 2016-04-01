@@ -6,7 +6,7 @@ function conectar($conectar)
         {
         $link = mysql_connect('localhost','root','') 
                 or die ("No se pudo conectar :(");
-        mysql_select_db('videos')
+        mysql_select_db('comidas')
         or die ("Base de Datos invalida ://");
         }
         if($conectar==0)

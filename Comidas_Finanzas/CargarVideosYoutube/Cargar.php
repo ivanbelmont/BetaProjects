@@ -16,9 +16,9 @@ if ($pos === false) {
 //    echo "Link anterior  $mystring<br>";
 //    echo "Link nuevo   //www.youtube.com/embed/$rest<br>";
 //    echo " y existe en la posición $pos";
-    $sql="INSERT INTO videos (id_video,nombre,url,fecha_video,principal)
+    $sql="INSERT INTO videos (id_video,nombre,url,fecha_video)
         VALUES
-        (null,'$nombre','$rest','$fecha',0)";
+        (null,'$nombre','$rest','$fecha')";
     mysql_query($sql) or die ("Error al cargar el video<br><a href='Admin_videos.php'>Regresar</a><br>".mysql_error());
 }?>
  <script languaje="JavaScript" type="text/javascript">

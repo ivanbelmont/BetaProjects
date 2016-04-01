@@ -167,13 +167,13 @@ switch ($mes) {
 					  //echo "<br>";
 					 if($fechaComp3==$eve)
 					 {
-					 	echo "<a title='$fila->nombre' href='#'>".$fila->nombre."</a><br>";
+					 	echo "<a id='open' title='$fila->nombre' href='#'>".$fila->nombre."</a><br>";
 					 }
 					 else{  echo ""; }
 					}
 
 
-					echo "<div class=\"bodybox\"><a href='#' title='x'></a>+</div> \n"; //BANDERA
+					echo "<div class=\"bodybox\"><a href='#' title='x'></a></div> \n"; //BANDERA
 					echo "</td> \n";
 					$diames++;
 				}

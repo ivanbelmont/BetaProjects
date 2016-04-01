@@ -134,10 +134,11 @@ $(document).ready(function(){
 
 	$objCalendario = new calendario;
 	$objCalendario->mostrarBarra();
+	?><a href="#" id="open" title="Agregar Comida"><img src="images/Add.png" width='5%' height='5%'></a><?php
+	?><a href="Recetas.php"  title="Mis Recetas"><img src="images/menu-icon-250.png" width='5%' height='5%'></a><?php
 	$objCalendario->mostrar();
 ?>
 </div>
-<a href="#" id="open">click aqui</a>
 
 <div id="popup" style="display: none;">
     <div class="content-popup">

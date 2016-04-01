@@ -1,0 +1,26 @@
+
+    <script type="text/javascript">
+    function Modules(id){
+      var idT =id;
+      $("#Di"+idT).load('ingredientes.php', { id: idT})
+      //$('#ModulosBox').css('display','none');//Cambiar valor CSS ocultar
+    }
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<?php 
+		include '../../conexion.php';
+        $mysqli=conectar(1);
+
+?>
+<a href="addcomidas.php"  title="Agregar Comida"><img src="images/Add.png" width='5%' height='5%'></a>
+<a href='index.php'>Regresar</a><br><br><?php
+        $mysqli->real_query ('SELECT * FROM  comida c ORDER BY nombre;');
+          $resultado = $mysqli->use_result();
+          while ($fila = $resultado->fetch_object())
+           {
+			echo "<h3 onclick='Modules(".$fila->id.")'>".$fila->nombre."</h3>"; 
+			echo "<div id=Di".$fila->id."></div>";
+			echo '<HR width=50% align="left">';
+           }
+
+?>
