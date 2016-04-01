@@ -18,7 +18,8 @@
           $resultado = $mysqli->use_result();
           while ($fila = $resultado->fetch_object())
            {
-			echo "<h3 onclick='Modules(".$fila->id.")'>".$fila->nombre."</h3>"; 
+			echo "<h3 onclick='Modules(".$fila->id.")'>".$fila->nombre.
+      "<a href='edit.php?id=".$fila->id."' title='Editar ".$fila->nombre."'><img  width='2%' height='5%' src='images/Edit-icon.png'></a></h3>"; 
 			echo "<div id=Di".$fila->id."></div>";
 			echo '<HR width=50% align="left">';
            }

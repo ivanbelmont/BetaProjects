@@ -71,6 +71,13 @@
     width: 100%;
     z-index: 1001;
 }
+#popupRe {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
 
 .content-popup {
 	margin:0px auto;
@@ -123,9 +130,32 @@ $(document).ready(function(){
 	$('#close').click(function(){
 		$('#popup').fadeOut('slow');
 		$('.popup-overlay').fadeOut('slow');
+        $('#popupRe').fadeOut('slow');
+        $('.popup-overlay').fadeOut('slow');
 		return false;
 	});
 });
+
+function opens(id)
+{
+        var ids=id;
+        $('#popupRe').fadeIn('slow');
+        $('.popup-overlay').fadeIn('slow');
+        $('.popup-overlay').height($(window).height());
+        Modules(id);
+}
+
+function closeds()
+{
+
+ $('#popupRe').fadeOut('slow');
+$('.popup-overlay').fadeOut('slow');
+}
+
+  function Modules(id){
+      var idT =id;
+      $("#RecetaC").load('ingredientes.php', { id: idT})
+    }
 </script>
 
 
@@ -137,6 +167,7 @@ $(document).ready(function(){
 	?><a href="#" id="open" title="Agregar Comida"><img src="images/Add.png" width='5%' height='5%'></a><?php
 	?><a href="Recetas.php"  title="Mis Recetas"><img src="images/menu-icon-250.png" width='5%' height='5%'></a><?php
 	$objCalendario->mostrar();
+    echo $_GET['nombre'];
 ?>
 </div>
 
@@ -166,6 +197,19 @@ $(document).ready(function(){
         		<input type="Submit" value="Registrar">
 
         	</form>
+            <p></p>
+            <div style="float:left; width:100%;">
+    </div>
+        </div>
+    </div>
+</div>
+<!-- RECETAS-->
+<div id="popupRe" style="display: none;">
+    <div class="content-popup">
+        <div onclick="closeds()" class="close"><a href="#" id="close"><img src="images/close.png"/></a></div>
+        <div>
+            <h2>Recetas</h2>
+            <div id="RecetaC"></div>
             <p></p>
             <div style="float:left; width:100%;">
     </div>

@@ -5,7 +5,7 @@ setlocale(LC_ALL,"esp");
 ?>
 <html> 
 <head> 
-  <title>Agregar Comidas</title> 
+  <title>Editar</title> 
   <meta name="viewport" content="initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -117,7 +117,13 @@ function DeletePrep(id) {
   <div data-role="header" data-position="fixed">
     <a href="index.php" >Principal</a>
     <a href="Recetas.php" >Regresar</a>
-    <h1>Agregar Comidas</h1>
+    <?php 
+    $idX=$_GET['id'];
+
+$resultado = $mysqli->query("SELECT * FROM comida WHERE id=".$idX);
+    $fila = $resultado->fetch_object();
+    echo "<h1> Editar " . $fila->nombre . "\n"."</h1>";
+    ?>
     <?php 
 $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -222,29 +228,59 @@ echo $fecha=$dayL." ".$day." de ".$month." del ".$year;
           
            <form action='procesar.php' id="miform" method='GET' data-ajax="false">
 
-   <input type="text" value=""  required name='Comida' placeholder="Nombre del Platillo" id="Com" class="custom" />
+   <input type="text" value="<?php echo $fila->nombre; ?>"  required name='Comida' placeholder="Nombre del Platillo" id="Com" class="custom" />
                           
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          </label>
                          <!-- <input type="date" name="fechas[]"><br><br>-->
                          <div data-role="fieldcontain" id ="<?php echo $fila->id?>"></div>
-                         <input type="hidden" name="opc" value="2">
+                         <input type="hidden" name="opc" value="3">
                           <label>Agregar Ingrediente</label><img onclick="myFunctioninput()" title="Agregar Ingrediente" WIDTH='5%' HEIGHT='5%' src="images/Add.ico"> </img><br>
                           <label>Agregar preparacion</label><img onclick="myFunctioninputPrep()" title="Agregar Preparacion" WIDTH='5%' HEIGHT='5%' src="images/addPrep.png"> </img>
                           
                           <input name="X" id="contar" type="hidden" value="0" > 
                           <input name="X" id="contarPrep" type="hidden" value="0" > 
                           <hr style="border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height:0;">Ingredientes</hr>
-                          <div id="myDIV">
+<div id="myDIV">
+  <?php 
+
+$mysqli->real_query ('SELECT * FROM ingredientes i WHERE i.id_comida='.$idX);
+
+          $resultado = $mysqli->use_result();
+          while ($fila = $resultado->fetch_object())
+           {
+            echo '<input id="X2" name="IngEdit[]" value="'.$fila->nombre.'" type="text"><br>';
+           }
+
+  ?>
 </div>
 <hr style="border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height:0;">Preparacion</hr>
 <div id="myDIV2">
+
+
+<?php 
+
+$mysqli->real_query ('SELECT * FROM preparacion p WHERE p.id_comida='.$idX);
+
+          $resultado = $mysqli->use_result();
+          while ($fila = $resultado->fetch_object())
+           {
+            echo '<input id="X3" name="PrepaEdit[]" value="'.$fila->nombre.'" type="text"><br>';
+           }
+
+  ?>
+
 </div>
-<label>Agregar Video</label><img  title="Agregar Video" WIDTH='8%' HEIGHT='8%' src="images/youtube-logo.png"> </img><br>
-<input type="text" name="namevideo" placeholder="Nombre del Video">
-<input type="text" name="url" placeholder="URL del VIDEO"><br><br>
-<input type="submit" value="Agregar">
+<?php
+$resultado = $mysqli->query("SELECT * FROM videos WHERE id_comida=".$idX);
+    $fila = $resultado->fetch_object();
+    ?>
+<label>Editar Video</label><img  title="Editar Video" WIDTH='8%' HEIGHT='8%' src="images/youtube-logo.png"> </img><br>
+<input type="text" value="<?php echo $fila->nombre; ?>" name="namevideo" placeholder="Nombre del Video">
+<input type="text" value="<?php echo "https://www.youtube.com/watch?v=".$fila->url; ?>" name="url" placeholder="URL del VIDEO"><br><br>
+<input type="hidden" name="id" value="<?php echo $idX; ?>">
+<input type="submit" value="Editar">
 </form>
           </fieldset>
       </div>

@@ -158,7 +158,7 @@ switch ($mes) {
 					echo "</div> \n";
 
 
-					$mysqli->real_query ('SELECT h.fecha_preparacion,c.nombre FROM historico h,comida c WHERE h.id_comida=c.id');
+					$mysqli->real_query ('SELECT c.id,h.fecha_preparacion,c.nombre FROM historico h,comida c WHERE h.id_comida=c.id');
 					$resultado = $mysqli->use_result();
 					while ($fila = $resultado->fetch_object())
 					{
@@ -167,7 +167,7 @@ switch ($mes) {
 					  //echo "<br>";
 					 if($fechaComp3==$eve)
 					 {
-					 	echo "<a id='open' title='$fila->nombre' href='#'>".$fila->nombre."</a><br>";
+					 	echo "<a id='".$fila->id."' onclick='opens(this.id)' title='$fila->nombre' href='#'>".$fila->nombre."</a><br>";
 					 }
 					 else{  echo ""; }
 					}
