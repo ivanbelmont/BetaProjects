@@ -251,6 +251,7 @@ $mysqli->real_query ('SELECT * FROM ingredientes i WHERE i.id_comida='.$idX);
           while ($fila = $resultado->fetch_object())
            {
             echo '<input id="X2" name="IngEdit[]" value="'.$fila->nombre.'" type="text"><br>';
+            echo '<input id="X2id" name="IngEditId[]" value="'.$fila->id.'" type="hidden">';
            }
 
   ?>
@@ -267,6 +268,7 @@ $mysqli->real_query ('SELECT * FROM preparacion p WHERE p.id_comida='.$idX);
           while ($fila = $resultado->fetch_object())
            {
             echo '<input id="X3" name="PrepaEdit[]" value="'.$fila->nombre.'" type="text"><br>';
+            echo '<input id="X4" name="PrepaEditId[]" value="'.$fila->id.'" type="hidden">';
            }
 
   ?>
@@ -275,17 +277,29 @@ $mysqli->real_query ('SELECT * FROM preparacion p WHERE p.id_comida='.$idX);
 <?php
 $resultado = $mysqli->query("SELECT * FROM videos WHERE id_comida=".$idX);
     $fila = $resultado->fetch_object();
+
+    if ($fila) 
+    {
+     $url= "https://www.youtube.com/watch?v=".$fila->url;
+     $nameVid= $fila->nombre;
+     echo "<input type='hidden' name='NuevoVideo' value='0' >";
+    }    
+    else 
+  {
+    $url= "";
+    $nameVid= "";
+    echo "<input type='hidden' name='NuevoVideo' value='1' >";
+
+  }
     ?>
 <label>Editar Video</label><img  title="Editar Video" WIDTH='8%' HEIGHT='8%' src="images/youtube-logo.png"> </img><br>
-<input type="text" value="<?php echo $fila->nombre; ?>" name="namevideo" placeholder="Nombre del Video">
-<input type="text" value="<?php echo "https://www.youtube.com/watch?v=".$fila->url; ?>" name="url" placeholder="URL del VIDEO"><br><br>
+<input type="text" value="<?php echo $nameVid; ?>" name="namevideo" placeholder="Nombre del Video">
+<input type="text" value="<?php echo $url; ?>" name="url" placeholder="URL del VIDEO"><br><br>
 <input type="hidden" name="id" value="<?php echo $idX; ?>">
 <input type="submit" value="Editar">
 </form>
           </fieldset>
       </div>
-  
-
 </div><!-- /page -->
 
 </body>

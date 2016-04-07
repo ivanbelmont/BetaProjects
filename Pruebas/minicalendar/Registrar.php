@@ -26,4 +26,5 @@ $mysqli->commit();
 header("location: index.php");
 $mysqli=conectar(0);
 
+
 ?>

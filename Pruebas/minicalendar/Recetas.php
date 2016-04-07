@@ -19,7 +19,12 @@
           while ($fila = $resultado->fetch_object())
            {
 			echo "<h3 onclick='Modules(".$fila->id.")'>".$fila->nombre.
-      "<a href='edit.php?id=".$fila->id."' title='Editar ".$fila->nombre."'><img  width='2%' height='5%' src='images/Edit-icon.png'></a></h3>"; 
+      "<a href='edit.php?id=".$fila->id."' title='Editar ".$fila->nombre."'><img  width='2%' height='5%' src='images/Edit-icon.png'></a>";
+      ?>
+      <a 
+      onClick="if(confirm('Eliminar <?php echo $fila->nombre; ?> ?'))
+       location.href='procesar.php?id=<?php echo $fila->id.'&opc=4';?>' " 
+       href='#' title='Eliminar <?php echo $fila->nombre; ?>'><img  width='2%' height='5%' src='images/Delete.ico'></a></h3><?php
 			echo "<div id=Di".$fila->id."></div>";
 			echo '<HR width=50% align="left">';
            }
